@@ -1,12 +1,24 @@
 import { FC } from 'react'
-import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Launch.module.css'
+import { LaunchInterface } from '../types/launch-interface'
 
-export const Launch: FC = () => {
+type LaunchType = {
+  launch?: LaunchInterface
+}
+
+export const Launch: FC<LaunchType> = ({ launch }) => {
   return (
-    <div>
-      
+    <div className={styles.container}>
+      {launch?.links.patch.small && (
+        <Image
+          src={launch.links.patch.small}
+          width='300px'
+          height='300px'
+          alt={launch.name}
+        />
+      )}
+      <h3>{launch?.name}</h3>
     </div>
   )
 }

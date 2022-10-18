@@ -11,7 +11,6 @@ export class AppService {
   constructor(private readonly httpService: HttpService) {}
 
   getNextLaunches(): Observable<AxiosResponse<Launch[]>> {
-    console.log('entrei aqui')
     return this.httpService
       .get(`${SPACEX_URL}/launches/upcoming`)
       .pipe(map((res) => res.data))
